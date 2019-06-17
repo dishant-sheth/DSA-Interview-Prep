@@ -2,9 +2,7 @@ import java.util.*;
 
 /*
     Leetcode link - https://leetcode.com/problems/generate-parentheses/
-
     Question - Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
-
     Example - for n = 3, solution is    
 
                     [
