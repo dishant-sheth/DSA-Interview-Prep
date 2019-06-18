@@ -3,6 +3,12 @@ import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+/*
+    Initialization -> O(n)
+    Union -> O(n)  ------ Why? Cost of finding the root of tree may end up involving traversal through all elements.
+    Connected -> O(n) --/
+*/
+
 public class QuickUnion{
 
     int[] id;
