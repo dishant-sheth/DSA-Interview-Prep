@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 /*
+    [HARD]
+
     Given an N*N grid, find out if there is a possibility for water to percolate from the top to the bottom.
     The grid may contain a million cells. 
     The grid has free cells (water can flow through it) represented as 0 and obstacles/rocks (water cannot flow through it) respresented as 1.
