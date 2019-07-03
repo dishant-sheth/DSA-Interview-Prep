@@ -3,4 +3,4 @@
 
 2. Solutions to the exercise questions in the Cracking the Coding Interview book will added as and when I code them up.
 
-3. I will also be adding a limited number solutions to the exercises in the book "Introduction to Algorithms" by CLRS.
+3. I will also be adding a limited number of solutions to the exercises in the book "Introduction to Algorithms" by CLRS.
