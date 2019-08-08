@@ -41,7 +41,24 @@ public class SubarraySumK{
 
     //Helper function for solution 2
     private void helper2(int[] arr, int sum){
-        
+        int n = arr.length;
+        HashMap<Integer, Integer> contigSum = new HashMap<>();
+        int curr_sum = 0;
+        for(int i=0; i<n; i++){
+            curr_sum += arr[i];
+            int other_sum = curr_sum - sum;
+            if(other_sum == 0){
+                leftIndex = 1;
+                rightIndex = i + 1;
+                break;
+            }
+            if(contigSum.containsKey(other_sum)){
+                leftIndex = contigSum.get(other_sum) + 2;
+                rightIndex = i + 1;
+                break;
+            }
+            contigSum.put(curr_sum, i);
+        }
     }
 
     //Solution 1 -> Input contains positive numbers only.
@@ -57,13 +74,22 @@ public class SubarraySumK{
 
     //Solution -> Input contains both positive and negative numbers.
     public void findSubarray2(int[] arr, int sum){
-
+        helper2(arr, sum);
+        if(leftIndex == -1){
+            System.out.println("No subarray found.");
+        }
+        else{
+            System.out.println(leftIndex + " " + rightIndex);
+        }
     }
 
     public static void main(String[] args) {
-        int[] arr = {1,2,3,4,5};
-        int needed_sum = 12;
+        int[] arr1 = {1,2,3,4,5};
+        int needed_sum1 = 12;
+        int[] arr2 = {10, 2, -2, -20, 10};
+        int needed_sum2 = -10;
         SubarraySumK subarraySumK = new SubarraySumK();
-        subarraySumK.findSubarray1(arr, needed_sum);
+        subarraySumK.findSubarray1(arr1, needed_sum1);
+        subarraySumK.findSubarray2(arr2, needed_sum2);
     }
 }
