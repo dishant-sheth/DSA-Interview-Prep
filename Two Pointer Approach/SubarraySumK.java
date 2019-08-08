@@ -7,6 +7,7 @@ public class SubarraySumK{
 
     private int leftIndex = -1, rightIndex = -1;
 
+    //Helper function for solution 1.
     private void helper1(int[] arr, int sum){
         int left = 0;
         int right = 0;
@@ -38,6 +39,11 @@ public class SubarraySumK{
         }
     }
 
+    //Helper function for solution 2
+    private void helper2(int[] arr, int sum){
+        
+    }
+
     //Solution 1 -> Input contains positive numbers only.
     public void findSubarray1(int[] arr, int sum){
         helper1(arr, sum);
@@ -47,6 +53,11 @@ public class SubarraySumK{
         else{
             System.out.println(leftIndex + " " + rightIndex);
         }
+    }
+
+    //Solution -> Input contains both positive and negative numbers.
+    public void findSubarray2(int[] arr, int sum){
+
     }
 
     public static void main(String[] args) {
