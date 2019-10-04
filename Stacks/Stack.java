@@ -1,5 +1,6 @@
-import java.util.*;
+import java.util.Scanner;
 import java.lang.Math;
+import java.lang.Object;
 
 //Basic implementation of a Stack
 
@@ -17,6 +18,7 @@ interface StackInterface<T>{
     public T pop();
     public T peek();
     public int size();
+    public void clear();
 }
 
 public class Stack<T> implements StackInterface<T>{
@@ -26,6 +28,12 @@ public class Stack<T> implements StackInterface<T>{
     private int CURR_SIZE = 0; 
     private int stackTop = -1;
 
+    private T[] stack;
+
+    public Stack(){
+        stack = (T[])new Object[FIXED_SIZE];
+    }
+
     //Util functions
 
     private boolean isEmpty(){
@@ -34,24 +42,34 @@ public class Stack<T> implements StackInterface<T>{
 
     private void ensureCapacity(){
         if(CURR_SIZE == FIXED_SIZE){
-                Arrays.copyOf(original, newLength);
+            FIXED_SIZE *= 2;
+            T[] newStack = (T[]) new Object[FIXED_SIZE];
+            for(int i=0; i<CURR_SIZE; i++){
+                newStack[i] = stack[i];
+            }
+            stack = newStack;
         }
     }
 
     @Override
     public boolean push(T value) {
-
-        return false;
+        ensureCapacity();
+        stack[++stackTop] = value;
+        CURR_SIZE += 1;
+        return true;
     }
 
     @Override
     public T pop() {
-        return null;
+        if(isEmpty()) return null;
+        CURR_SIZE -= 1;
+        return stack[stackTop--];
     }
 
     @Override
     public T peek() {
-        return null;
+        if(isEmpty()) return null;
+        return stack[stackTop];
     }
 
     @Override
@@ -59,7 +77,55 @@ public class Stack<T> implements StackInterface<T>{
         return CURR_SIZE;
     }
 
+    @Override
+    public void clear(){
+        FIXED_SIZE = 10;
+        CURR_SIZE = 0;
+        stackTop = -1;
+        stack = (T[])new Object[FIXED_SIZE];
+    }
+
+    private void printStack(){
+        System.out.println("----------------");
+        System.out.println("STACK DETAILS: ");
+        System.out.println("CAPACITY -> " + FIXED_SIZE);
+        System.out.println("USED -> " + CURR_SIZE);
+        System.out.println("----------------");
+        System.out.println();
+        for(int i=stackTop; i>=0; i--){
+            System.out.println(" | " + stack[i] + " | ");
+        }
+    }
+
     public static void main(String[] args) {
-        
+        Stack<Integer> myStack = new Stack<>();
+        myStack.push(1);
+        myStack.push(1);
+        myStack.push(1);
+        myStack.push(4);
+        myStack.push(1);
+        myStack.push(1);
+        myStack.push(1);
+        myStack.push(4);
+        myStack.push(1);
+        myStack.push(1);
+        myStack.push(1);
+        myStack.push(4);
+        myStack.push(1);
+        myStack.push(1);
+        myStack.push(1);
+        myStack.push(4);
+        myStack.push(4);
+        myStack.push(1);
+        myStack.push(1);
+        myStack.push(1);
+        myStack.push(4);
+        myStack.push(1);
+        myStack.push(1);
+        myStack.push(1);
+        myStack.push(4);
+        myStack.printStack();
+        myStack.clear();
+        myStack.printStack();
     }
 }
